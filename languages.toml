@@ -2,6 +2,64 @@
 #   https://docs.helix-editor.com/master/languages.html
 #   https://github.com/helix-editor/helix/blob/master/languages.toml
 
+#servers
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[language-server.superhtml-lsp]
+command = "superhtml"
+args = ["lsp"]
+
+[language-server.emmet-lsp]
+command = "emmet-language-server"
+args = ["--stdio"]
+
+[language-server.intelephense]
+commmand = "intelephense"
+args = ["--stdio"]
+
+[language-server.intelephense.config]
+licenceKey = ""
+
+# css
+[[language]]
+name = "css"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls", "emmet-lsp" ]
+
+# html
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+language-servers = [ "vscode-html-language-server", "superhtml-lsp", "tailwindcss-ls", "emmet-lsp" ]
+
+# javascript
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+language-servers = [ "typescript-language-server", "vscode-eslint-language-server"]
+
+# json
+[[language]]
+name = "json"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "json5 jsonc"] }
+
+# jsx
+[[language]]
+name = "jsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+language-servers = [ "typescript-language-server", "tailwindcss-ls", "emmet-lsp" ]
+
+# php
+[[language]]
+name = "php"
+auto-format = true
+language-servers = [ "intelephense" ]
 
 # rust
 [[language]]
@@ -14,7 +72,28 @@ command = "rust-analyzer"
 [language-server.rust-analyzer.config.check]
 command = "clippy"
 
-
-# cpp
+# typescript
 [[language]]
-name = "cpp"
+name = "typescript"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+language-servers = [ "typescript-language-server", "vscode-eslint-language-server"]
+
+# tsx
+[[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [ "typescript-language-server", "tailwindcss-ls", "emmet-lsp" ]
+
+#vue
+[[language]]
+name = "vue"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "vue"] }
+language-servers = ["typescript-language-server"]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location =  "~/.npm-global/lib/node_modules/@vue/language-server/"
+languages = ["vue"]

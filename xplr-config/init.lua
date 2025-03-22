@@ -2,10 +2,11 @@
 --   https://github.com/sayanarijit/tri-pane.xplr
 --   https://xplr.dev/en/layouts
 
-version = '0.21.7'
+version = '1.0.0'
 
 xplr.config.node_types.directory.meta.icon = ""
 xplr.config.node_types.file = { meta = { icon = "" } }
+xplr.config.general.show_hidden = true
 
 local function is_text_file(path)
     local file = io.open(path, "rb")
